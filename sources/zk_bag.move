@@ -44,12 +44,12 @@ module zk_bag::zk_bag {
   // === Public-Mutative Functions ===
 
  fun init(ctx: &mut TxContext) {
-  let bag_storage = BagStore {
+  let bag_store = BagStore {
    id: object::new(ctx),
    items: table::new(ctx)
   };
 
-  transfer::share_object(bag_storage);
+  transfer::share_object(bag_store);
  }
 
  public fun new(self:&mut BagStore, receiver: address, ctx: &mut TxContext) {
